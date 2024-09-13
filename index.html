@@ -17,12 +17,15 @@
     <script>
         var list = ["Manzanas", "Peras"];
 
-        for(i = 0; i < list.length; i++) {
-            item = document.createElement("div");
-            item.textContent = list[i];
-            item.className = "item";
+        function printItems() {
+            document.querySelector("#my-list").innerHTML="";
+            for(i = 0; i < list.length; i++) {
+                item = document.createElement("div");
+                item.textContent = list[i];
+                item.className = "item";
 
-            document.querySelector("#my-list").appendChild(item);
+                document.querySelector("#my-list").appendChild(item);
+            }
         }
 
         document.querySelector("#form-item").addEventListener("submit", createItem);
@@ -30,7 +33,9 @@
         function createItem(event) {
             event.preventDefault();
             list.push(document.querySelector("[name=item]").value);
+            printItems();
         }
+        printItems();
     </script>
 </body>
 </html>
