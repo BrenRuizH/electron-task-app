@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form id="form-item" action="">
         <label for="">Item</label>
         <input type="text" name="item">
         <button type="submit">Enviar</button>
@@ -23,6 +23,13 @@
             item.className = "item";
 
             document.querySelector("#my-list").appendChild(item);
+        }
+
+        document.querySelector("#form-item").addEventListener("submit", createItem);
+
+        function createItem(event) {
+            event.preventDefault();
+            list.push(document.querySelector("[name=item]").value);
         }
     </script>
 </body>
