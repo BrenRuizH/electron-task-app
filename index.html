@@ -11,5 +11,19 @@
         <input type="text" name="item">
         <button type="submit">Enviar</button>
     </form>
+
+    <div id="my-list"></div>
+
+    <script>
+        var list = ["Manzanas", "Peras"];
+
+        for(i = 0; i < list.length; i++) {
+            item = document.createElement("div");
+            item.textContent = list[i];
+            item.className = "item";
+
+            document.querySelector("#my-list").appendChild(item);
+        }
+    </script>
 </body>
 </html>
