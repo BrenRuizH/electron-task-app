@@ -24,7 +24,7 @@
     <script>
         var list = ["Manzanas", "Peras"];
 
-        function printItems() {
+        function itemsPrint() {
             document.querySelector("#my-list").innerHTML="";
             for(i = 0; i < list.length; i++) {
                 item = document.createElement("li");
@@ -35,14 +35,22 @@
             }
         }
 
+        function itemCreate() {
+            item = document.querySelector("[name=item]");
+            if(item.value.trim() !== "") {
+                list.push(item.value.trim());
+            }
+            item.value = "";
+            itemsPrint();
+        }
+
         document.querySelector("#form-item").addEventListener("submit", createItem);
 
         function createItem(event) {
             event.preventDefault();
-            list.push(document.querySelector("[name=item]").value);
-            printItems();
+            itemCreate();
         }
-        printItems();
+        itemsPrint();
     </script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
