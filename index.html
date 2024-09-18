@@ -50,6 +50,16 @@
             event.preventDefault();
             itemCreate();
         }
+
+        document.querySelector("[name=item]").addEventListener("keyup", function(event) {
+            // El número 13 es la tecla ENTER en el teclado
+            if (event.keyCode === 13) {
+                // Cancelar la accion por defecto si es necesario
+                event.preventDefault();
+                itemCreate();
+            }
+        });
+
         itemsPrint();
     </script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
