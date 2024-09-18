@@ -31,7 +31,16 @@
             for(i = 0; i < list.length; i++) {
                 item = document.createElement("li");
                 item.textContent = list[i];
-                item.className = "list-group-item";
+                item.className = "list-group-item d-flex justify-content-between align-items-center";
+
+                b = document.createElement("button");
+                b.className = "btn btn-danger";
+
+                ic = document.createElement("i");
+                ic.className = "fa fa-trash";
+
+                b.appendChild(ic);
+                item.appendChild(b);
 
                 document.querySelector("#my-list").appendChild(item);
             }
