@@ -34,7 +34,8 @@
                 item.className = "list-group-item d-flex justify-content-between align-items-center";
 
                 b = document.createElement("button");
-                b.className = "btn btn-danger";
+                b.className = "btn btn-danger item-delete";
+                b.addEventListener("click", itemDelete);
 
                 ic = document.createElement("i");
                 ic.className = "fa fa-trash";
@@ -43,6 +44,18 @@
                 item.appendChild(b);
 
                 document.querySelector("#my-list").appendChild(item);
+            }
+        }
+
+        itemsPrint();
+
+        //document.querySelector(".item-delete").addEventListener("click", itemDelete);
+        function itemDelete(event) {
+            console.log("Borrar " + event.target.tagName);
+            if(event.target.tagName == "I") {
+                event.target.parentElement.parentElement.remove();
+            } else {
+                event.target.parentElement.remove();
             }
         }
 
@@ -71,7 +84,6 @@
             }
         });
 
-        itemsPrint();
     </script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
