@@ -18,4 +18,4 @@ function createWindow() {
 app.whenReady().then(createWindow);
 
 mydb.create_db();
-mydb.item_save("Prueba");
+mydb.item_save("Nombre");
