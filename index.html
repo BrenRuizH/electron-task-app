@@ -10,7 +10,6 @@
 </head>
 <body>
     <div class="container">
-        <h1><i class="fa fa-trash"></i></h1>
         <form id="form-item" action="">
             <div class="form-group">
                 <label for="">Item</label>
@@ -24,7 +23,11 @@
     </div>
 
     <script>
+        
+
         var list = ["Uno", "Dos", "Tres", "Cuatro"];
+
+        var { ipcRenderer } = require("electron");
 
         function itemsPrint() {
             document.querySelector("#my-list").innerHTML="";
@@ -66,9 +69,11 @@
 
         function itemCreate() {
             item = document.querySelector("[name=item]");
-            if(item.value.trim() !== "") {
+            if(item.value.trim() != "") {
                 list.push(item.value.trim());
+                ipcRenderer.send('item-save', item.value.trim());
             }
+
             item.value = "";
             itemsPrint();
         }
