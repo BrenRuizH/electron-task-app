@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron');
+const mydb = require('./database');
 
 function createWindow() {
     let win = new BrowserWindow(
@@ -15,3 +16,5 @@ function createWindow() {
 }
 
 app.whenReady().then(createWindow);
+
+mydb.create_db();
