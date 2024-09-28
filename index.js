@@ -20,3 +20,4 @@ app.whenReady().then(createWindow);
 
 //mydb.create_db();
 //mydb.item_save("Nombre");
+mydb.item_all();

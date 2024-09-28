@@ -30,5 +30,12 @@ module.exports.item_save = function(name) {
     db.insertTableContent('items', location, obj, (succ, msg) => {
         console.log("Success: " + succ);
         console.log("Message: " + msg);
+    });
+}
+
+module.exports.item_all = function () {
+    db.getAll('items', location, (succ, data) => {
+        console.log(succ);
+        console.log(data);
     })
 }
