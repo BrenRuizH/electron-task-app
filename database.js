@@ -53,3 +53,9 @@ module.exports.item_update = function (id, name) {
         console.log("Message: " + msg);
     });
 }
+
+module.exports.item_delete = function (id) {
+    db.deleteRow('items', location, {'id': id}, (succ, msg) => {
+        console.log(msg);
+    });
+}
