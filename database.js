@@ -39,6 +39,12 @@ module.exports.item_all = function () {
     });
 }
 
+module.exports.item_get = function (id) {
+    db.getRows('items', location, {'id': id}, (succ, data) => {
+        console.log(data[0].name);
+    });
+}
+
 module.exports.item_update = function (id, name) {
     let where = {
         "id": id
