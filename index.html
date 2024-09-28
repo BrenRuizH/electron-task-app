@@ -73,12 +73,13 @@
         function itemCreate() {
             item = document.querySelector("[name=item]");
             if(item.value.trim() != "") {
-                list.push(item.value.trim());
+                //list.push(item.value.trim());
                 ipcRenderer.send('item-save', item.value.trim());
+                ipcRenderer.send('item-send');
             }
 
             item.value = "";
-            itemsPrint();
+            //itemsPrint();
         }
 
         document.querySelector("#form-item").addEventListener("submit", createItem);
