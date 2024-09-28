@@ -13,6 +13,11 @@ ipcMain.on('item-save', (event, arg) => {
     }
 });
 
+ipcMain.on('item-delete', (event, arg) => {
+    console.log(arg);
+    this.item_delete(parseInt(arg));
+});
+
 // Directio que se crea por defecto C:\Usuarios\brenr\AppData\Roaming\taskapp
 module.exports.create_db = function () {
     db.createTable('items', location, (succ, msg) => {

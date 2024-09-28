@@ -71,6 +71,7 @@
                     console.log("Elemento a borrar: " + value.name);
                     list.splice(index, 1);
                     itemsPrint();
+                    ipcRenderer.send('item-delete', itemID);
                 }
             });
 
