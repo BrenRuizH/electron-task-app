@@ -59,15 +59,28 @@
         //document.querySelector(".item-delete").addEventListener("click", itemDelete);
         function itemDelete(event) {
             console.log("Borrar " + event.target.tagName);
-            item = event.target.parentElement.parentElement;
+            if (event.target.tagName == "I") {
+                item = event.target.parentElement.parentElement;
+            } else {
+                item = event.target.parentElement;
+            }
 
-            list.splice(item.getAttribute("data-id"), 1);
+            var itemID = item.getAttribute("data-id");
+            list.find(function(value, index) {
+                if (value && value.id == itemID) {
+                    console.log("Elemento a borrar: " + value.name);
+                    list.splice(index, 1);
+                    itemsPrint();
+                }
+            });
+
+            //list.splice(item.getAttribute("data-id"), 1);
             /*if(event.target.tagName == "I") {
                 item.remove();
             } else {
                 item.remove();
             }*/
-           itemsPrint();
+           //itemsPrint();
         }
 
         function itemCreate() {
