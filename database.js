@@ -35,7 +35,21 @@ module.exports.item_save = function(name) {
 
 module.exports.item_all = function () {
     db.getAll('items', location, (succ, data) => {
-        console.log(succ);
         console.log(data);
-    })
+    });
+}
+
+module.exports.item_update = function (id, name) {
+    let where = {
+        "id": id
+    }
+
+    let set = {
+        "name": name
+    }
+
+    db.updateRow('items', location, where, set, (succ, msg) => {
+        console.log("Success: " + succ);
+        console.log("Message: " + msg);
+    });
 }
