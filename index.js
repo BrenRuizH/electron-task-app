@@ -19,7 +19,7 @@ function createWindow() {
 
 app.whenReady().then(createWindow);
 
-//mydb.create_db();
+mydb.create_db();
 //mydb.item_save("Apellido");
 //mydb.item_get(1727488090538);
 
