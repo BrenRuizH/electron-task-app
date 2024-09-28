@@ -23,19 +23,24 @@
     </div>
 
     <script>
-        
-
-        var list = ["Uno", "Dos", "Tres", "Cuatro"];
-
         var { ipcRenderer } = require("electron");
+
+        var list = [];
+
+        ipcRenderer.send('item-send');
+
+        ipcRenderer.on('item-all', (event, data) => {
+            list = data;
+            itemsPrint();
+        });
 
         function itemsPrint() {
             document.querySelector("#my-list").innerHTML="";
             for(i = 0; i < list.length; i++) {
                 item = document.createElement("li");
-                item.textContent = list[i];
+                item.textContent = list[i].name;
                 item.className = "list-group-item d-flex justify-content-between align-items-center";
-                item.setAttribute("data-id", i);
+                item.setAttribute("data-id", list[i].id);
 
                 b = document.createElement("button");
                 b.className = "btn btn-danger item-delete";
@@ -50,8 +55,6 @@
                 document.querySelector("#my-list").appendChild(item);
             }
         }
-
-        itemsPrint();
 
         //document.querySelector(".item-delete").addEventListener("click", itemDelete);
         function itemDelete(event) {

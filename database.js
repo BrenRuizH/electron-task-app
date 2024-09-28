@@ -1,5 +1,5 @@
 const db = require('electron-db');
-const { ipcMain } = require("electron");
+const { ipcMain, BrowserWindow } = require("electron");
 const path = require('path');
 const { event } = require('jquery');
 
@@ -35,7 +35,9 @@ module.exports.item_save = function(name) {
 
 module.exports.item_all = function () {
     db.getAll('items', location, (succ, data) => {
-        console.log(data);
+        //console.log(data);
+        const win = BrowserWindow.getFocusedWindow();
+        win.webContents.send('item-all', data);
     });
 }
 

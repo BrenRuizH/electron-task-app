@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const mydb = require('./database');
+const { event } = require('jquery');
 
 function createWindow() {
     let win = new BrowserWindow(
@@ -20,5 +21,10 @@ app.whenReady().then(createWindow);
 
 //mydb.create_db();
 //mydb.item_save("Apellido");
-//mydb.item_all();
-mydb.item_get(1727488090538);
+//mydb.item_get(1727488090538);
+
+app.on('ready', () => {
+    ipcMain.on('item-send', (event, data) => {
+        mydb.item_all();
+    });
+});
